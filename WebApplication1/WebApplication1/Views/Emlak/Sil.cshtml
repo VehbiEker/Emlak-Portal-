@@ -1,0 +1,58 @@
+﻿@model Emlak
+
+
+<form method="post">
+    <input asp-for="Id" hidden/>  
+    <div class="border pt-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary">Emlak Sil</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="EmlakAdi" class="p-0"></label>
+            <input asp-for="EmlakAdi" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Aciklama" class="p-0"></label>
+            <input asp-for="Aciklama" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Il" class="p-0"></label>
+            <input asp-for="Il" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Ilce" class="p-0"></label>
+            <input asp-for="Ilce" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Mahalle" class="p-0"></label>
+            <input asp-for="Mahalle" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Fiyat" class="p-0"></label>
+            <input asp-for="Fiyat" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Durumu" class="p-0"></label>
+            <input asp-for="Durumu" disabled class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width:260px">Sil</button>
+
+        <a asp-controller="Emlak" asp-action="Index" class="btn btn-primary btn-lg" style="width:260px">
+            Emlaklara Geri Dön
+        </a>
+
+    </div>
+
+
+
+</form>
+

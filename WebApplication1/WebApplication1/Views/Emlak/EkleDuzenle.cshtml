@@ -1,0 +1,104 @@
+﻿@model Emlak
+
+
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="ResimUrl" hidden /> 
+
+    <div class="row">
+        <div class="col-10">
+
+            <div class="border pt-3 mt-50">
+                <div class="row pb-30">
+                    <h2 class="text-warning">@(Model == null ? "Emlak Ekle" : "Emlak Düzenleme Sayfası")</h2>
+                    <hr />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EmlakAdi" class="p-0"></label>
+                    <input asp-for="EmlakAdi" class="form-control" />
+                    <span asp-validation-for="EmlakAdi" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="emlakturuId" class="p-0"></label>
+                    <select asp-for="emlakturuId" asp-items="ViewBag.emlakturuList" class="form-select">
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Aciklama" class="p-0"></label>
+                    <input asp-for="Aciklama" class="form-control" />
+                    <span asp-validation-for="Aciklama" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Il" class="p-0"></label>
+                    <input asp-for="Il" class="form-control" />
+                    <span asp-validation-for="Il" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Ilce" class="p-0"></label>
+                    <input asp-for="Ilce" class="form-control" />
+                    <span asp-validation-for="Ilce" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Mahalle" class="p-0"></label>
+                    <input asp-for="Mahalle" class="form-control" />
+                    <span asp-validation-for="Mahalle" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Fiyat" class="p-0"></label>
+                    <input asp-for="Fiyat" class="form-control" />
+                    <span asp-validation-for="Fiyat" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Durumu" class="p-0"></label>
+                    <input asp-for="Durumu" class="form-control" />
+                    <span asp-validation-for="Durumu" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ResimUrl" class="p-0"></label>
+                    <input type="file" name="file" class="form-control" />
+                </div>
+
+                @if (Model != null)
+                {
+                    <button type="submit" class="btn btn-warning btn-lg" style="width:260px">Düzenle</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-lg" style="width:260px">Emlak Ekle</button>
+
+                }
+                <a asp-controller="Emlak" asp-action="Index" class="btn btn-primary btn-lg" style="width:260px">
+                    Emlaklara Geri Dön
+                </a>
+
+            </div>
+
+
+        </div>
+        <div class="col-2">
+            @if (Model != null)
+            {
+                <img src="@Model.ResimUrl" width="285" 
+                style="border-radius:7px; border:1px solid #bbb9b9"/>
+            }
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+</form>
+
+ 

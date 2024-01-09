@@ -1,0 +1,104 @@
+﻿@using WebApplication1.Utility;
+@model List<Emlak> //emlak turlerinin ekranda gozukebilmesi icin anotasyon olusturdum.
+
+@if (TempData["basarili"] != null)
+{
+    <h3 style="color:green" >@TempData["basarili"]</h3>
+}
+
+    <div class=" container">
+
+        <div class="row pt-8 pb-10">
+            <div>
+            <h2 style="color : #ffc107 "> Emlak Sayfası</h2>
+        </div>
+        </div>
+
+    <table class = "table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Resim
+                </th>
+
+                <th>
+                    Id
+                </th>
+                <th>
+                    EmlakAdi
+                </th>
+                <th>
+                    Aciklama
+                </th>
+                <th>
+                    Il
+                </th>
+                <th>
+                    Ilce
+                </th>
+                <th>
+                    Mahalle
+                </th>
+                <th>
+                    Fiyat
+                </th>
+                <th>
+                    Durumu
+                </th>
+                <th>
+                    emlakturu
+                
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+
+            </tr>
+        </thead>
+    
+        <tbody>
+            @foreach (var Emlak in Model) // Id ve Turu emlakturu.cs deki ile ayni olmali!!
+            {
+                <tr>
+                    <td align="center" valign="middle"> 
+                        <img src="@Emlak.ResimUrl" style="border-radius: 7px; border: 1px solid #bbb9b9;
+                            max-width: 245px; max-width: 400px;" />
+                    </td>
+                    <td>@Emlak.Id</td>
+                    <td>@Emlak.EmlakAdi</td>
+                    <td>@Emlak.Aciklama</td>
+                    <td>@Emlak.Il</td>
+                    <td>@Emlak.Ilce</td>
+                    <td>@Emlak.Mahalle</td>
+                    <td>@Emlak.Fiyat</td>
+                    <td>@Emlak.Durumu</td>
+                    <td>@Emlak.emlakturu.Turu </td>
+
+                    @if (User.IsInRole(UserRoles.Role_Admin)) // sadece admin olanlar gorebilir
+                    {
+                        <td>
+                            <a asp-controller="Emlak" asp-action="EkleDuzenle" asp-route-id="@Emlak.Id" class="btn btn-success" type="submit">Düzenle</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Emlak" asp-action="Sil" asp-route-id="@Emlak.Id" class="btn btn-danger" type="submit">Sil</a>
+                        </td>
+                    }
+                </tr>
+            }   
+        </tbody>  
+    </table>
+
+      @if (User.IsInRole(UserRoles.Role_Admin)) // sadece admin olanlar gorebilir
+    {
+        <div class="row pt-3 pb-2">
+            <div>
+            <a asp-controller="Emlak" asp-action="EkleDuzenle" type="button" class="btn btn-warning btn-lg">
+                Yeni Emlak Oluştur
+            </a>
+        </div>
+
+    </div>
+      }
+
+</div>

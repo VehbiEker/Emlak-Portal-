@@ -1,0 +1,29 @@
+﻿@model emlakturu
+
+
+<form method="post">
+
+    <div class="border pt-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-warning">Emlak Türü Düzenle</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Turu" class="p-0"></label>
+            <input asp-for="Turu" class="form-control" />
+            <span asp-validation-for="Turu" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg" style="width:260px">Kaydet</button>
+
+        <a asp-controller="emlakturu" asp-action="Index" class="btn btn-primary btn-lg" style="width:260px">
+            Emlak Türlerine Geri Dön
+        </a>
+
+    </div>
+
+
+
+</form>
+

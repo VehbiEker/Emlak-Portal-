@@ -1,0 +1,60 @@
+﻿@model List<emlakturu> //emlak turlerinin ekranda gozukebilmesi icin anotasyon olusturdum.
+
+@if (TempData["basarili"] != null)
+{
+    <h3 style="color:green" >@TempData["basarili"]</h3>
+}
+
+    <div class=" container">
+
+        <div class="row pt-3 pb-5">
+            <div>
+                <h1>Emlak Türü Sayfası</h1> 
+            </div>
+        </div>
+
+    <table class = "table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Emlak Türü
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+
+            </tr>
+        </thead>
+    
+        <tbody>
+            @foreach (var emlakturu in Model) // Id ve Turu emlakturu.cs deki ile ayni olmali!!
+            {
+                <tr>
+                    <td>@emlakturu.Id</td>
+                    <td>@emlakturu.Turu</td>
+                    <td>
+                        <a asp-controller="emlakturu" asp-action="Duzenle" asp-route-id="@emlakturu.Id" class="btn btn-success" type="submit">Düzenle</a>
+
+                    </td>
+                    <td>
+                        <a asp-controller="emlakturu" asp-action="Sil" asp-route-id="@emlakturu.Id" class="btn btn-danger" type="submit">Sil</a>
+                    </td>
+                </tr>
+            }   
+        </tbody>  
+    </table>
+
+    <div class="row pt-3 pb-2">
+        <div>
+            <a asp-controller="emlakturu" asp-action="Ekle" type="button" class="btn btn-warning btn-lg">
+                Yeni Emlak Türü Oluştur
+            </a>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,46 @@
+﻿<!-- jQuery ve Popper.js dosyalarını ekleyin -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+@model emlakturu
+
+<form id="silForm" method="post">
+    <input asp-for="Id" hidden />
+    <div class="border pt-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-danger">Emlak Türü Sil</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Turu" class="p-0"></label>
+            <input asp-for="Turu" disabled class="form-control" />
+        </div>
+
+        <button type="submit" id="silButton" class="btn btn-danger btn-lg" style="width:260px">Sil</button>
+
+        <a asp-controller="emlakturu" asp-action="Index" class="btn btn-primary btn-lg" style="width:260px">
+            Emlak Türlerine Geri Dön
+        </a>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+        $('#silButton').click(function () {
+            var formData = $('#silForm').serialize();
+
+            $.ajax({
+                url: '@Url.Action("SilPOST", "emlakturu")',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
